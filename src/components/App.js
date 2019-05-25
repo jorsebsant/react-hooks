@@ -3,7 +3,7 @@ import Form from './Form'
 import '../styles/App.css';
 
 function App() {
-  
+
   const [welcomeMessage, setWelcomeMessage] = useState("Welcome to Numbers Trivia!")
 
   // this hook acts like componentdidmount and didupdate at the same time, if we only want it to be executed one time
@@ -21,6 +21,7 @@ function App() {
         <h1 id="welcomeMessage">
           {welcomeMessage}
         </h1>
+        <div id="result" style={{marginBottom: '15px'}}></div>
         <Form/>
       </header>
     </div>
