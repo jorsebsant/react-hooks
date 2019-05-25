@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 
-function Form(props){
+function Form(){
   // the first parameter returned is the current state, and the second one is the function that updates it
   // the only parameter sent is the initial value
   let [number, setNumber] = useState("random");
@@ -31,18 +31,20 @@ function Form(props){
   }
 
   function onSubmit(e){
+
     e.preventDefault();
+
     axios.get('http://numbersapi.com/' + number + '/' + type)
-         .then(function(response){
-           const elm = document.getElementById('result');
-           elm.innerHTML = response.data;
-         }).catch(function(e){
-           console.log("error", e); //simple error handling
-         });
+      .then(function(response){
+        const elm = document.getElementById('result');
+        elm.innerHTML = response.data;
+      }).catch(function(e){
+        console.log("error", e); //simple error handling
+      });
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div>
         <input type="text" name="number" value={number} onChange={onNumberChanged} placeholder="Enter a number (Optional)" />
       </div>
