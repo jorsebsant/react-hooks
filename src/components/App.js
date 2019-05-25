@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import Form from './Form'
 import '../styles/App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1 id="welcomeMessage">Welcome to Numbers Trivia!</h1>
+        <Form/>
       </header>
     </div>
   );

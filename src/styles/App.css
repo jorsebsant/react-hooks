@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+form {
+  font-size: 15px;
+}  
+form input, form select {
+  padding: 5px;
+}  
+form select {
+  width: 100%; 
+}  
+form div {
+  margin-bottom: 8px;
+}
