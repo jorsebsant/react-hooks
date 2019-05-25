@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 
 function Form(props){
   // the first parameter returned is the current state, and the second one is the function that updates it
@@ -9,7 +10,7 @@ function Form(props){
 
   function onNumberChanged(e){
 
-    let value = e.target.value.trim();
+    const value = e.target.value.trim();
 
     if(!value.length){
       setNumber("random"); //default value
@@ -20,13 +21,24 @@ function Form(props){
   
   function onTypeChanged(e){
 
-    let value = e.target.value.trim();
+    const value = e.target.value.trim();
 
     if(!value.length) {
       setType("trivia"); //default value
     } else {
       setType(value);
     }
+  }
+
+  function onSubmit(e){
+    e.preventDefault();
+    axios.get('http://numbersapi.com/' + number + '/' + type)
+         .then(function(response){
+           const elm = document.getElementById('result');
+           elm.innerHTML = response.data;
+         }).catch(function(e){
+           console.log("error", e); //simple error handling
+         });
   }
 
   return (
